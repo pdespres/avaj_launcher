@@ -6,7 +6,7 @@ package fr._42.avaj_launcher.aircraft;
 
 public abstract class AircraftFactory {
 
-    public static Aircraft newAirCraft(String type, String name, int longitude, int latitude, int height) {
+    public static Flyable newAirCraft(String type, String name, int longitude, int latitude, int height) {
 
     }
 }

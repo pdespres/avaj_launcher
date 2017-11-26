@@ -1,5 +1,7 @@
 package fr._42.avaj_launcher.aircraft;
 
+import fr._42.avaj_launcher.weather.WeatherTower;
+
 public class Helicopter extends Aircraft implements Flyable{
     private WeatherTower weatherTower;
 
