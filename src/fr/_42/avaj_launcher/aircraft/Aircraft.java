@@ -14,6 +14,6 @@ public abstract class Aircraft {
     }
 
     private static long nextId(){
-        return(Aircraft.idCounter += 1);
+        return (Aircraft.idCounter += 1);
     }
 }
