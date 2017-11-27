@@ -1,6 +1,6 @@
-package fr._42.avaj_launcher.weather;
+package weather;
 
-import fr._42.avaj_launcher.aircraft.Flyable;
+import aircraft.Flyable;
 import java.util.ArrayList;
 
 /*

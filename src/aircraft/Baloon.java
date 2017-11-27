@@ -1,12 +1,10 @@
-package fr._42.avaj_launcher.aircraft;
+package aircraft;
 
 import fr._42.avaj_launcher.weather.WeatherTower;
 
-public class JetPlane {
+public class Baloon extends Aircraft implements Flyable {
 
-    private WeatherTower weatherTower;
-
-    JetPlane(String name, Coordinates coordinates) {
+    Ballon(String name, Coordinates coordinates) {
         super(name, coordinates);
     }
 

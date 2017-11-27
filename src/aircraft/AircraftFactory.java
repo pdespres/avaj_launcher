@@ -1,4 +1,4 @@
-package fr._42.avaj_launcher.aircraft;
+package aircraft;
 
 /*
 *   factory pattern linke a l'interface directement
