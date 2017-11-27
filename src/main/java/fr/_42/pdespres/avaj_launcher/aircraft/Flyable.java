@@ -1,6 +1,6 @@
-package aircraft;
+package fr._42.pdespres.avaj_launcher.aircraft;
 
-import fr._42.avaj_launcher.weather.WeatherTower;
+import fr._42.pdespres.avaj_launcher.weather.WeatherTower;
 
 public interface Flyable {
 

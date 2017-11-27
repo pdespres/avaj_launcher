@@ -1,6 +1,6 @@
-package weather;
+package fr._42.pdespres.avaj_launcher.weather;
 
-import aircraft.Flyable;
+import fr._42.pdespres.avaj_launcher.aircraft.Flyable;
 import java.util.ArrayList;
 
 /*

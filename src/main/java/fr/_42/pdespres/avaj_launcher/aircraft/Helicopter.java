@@ -1,12 +1,12 @@
-package aircraft;
+package fr._42.pdespres.avaj_launcher.aircraft;
 
-import fr._42.avaj_launcher.weather.WeatherTower;
+import fr._42.pdespres.avaj_launcher.weather.WeatherTower;
 
-public class JetPlane {
+public class Helicopter extends Aircraft implements Flyable {
 
     private WeatherTower weatherTower;
 
-    JetPlane(String name, Coordinates coordinates) {
+    Helicopter(String name, Coordinates coordinates) {
         super(name, coordinates);
     }
 

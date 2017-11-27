@@ -1,4 +1,4 @@
-package aircraft;
+package fr._42.pdespres.avaj_launcher.aircraft;
 
 public class Coordinates {
 

@@ -1,6 +1,6 @@
-package weather;
+package fr._42.pdespres.avaj_launcher.weather;
 
-import aircraft.Coordinates;
+import fr._42.pdespres.avaj_launcher.aircraft.Coordinates;
 
 /*
 **  singleton pattern
