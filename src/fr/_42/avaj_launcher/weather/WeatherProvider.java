@@ -1,16 +1,25 @@
 package fr._42.avaj_launcher.weather;
 
+import fr._42.avaj_launcher.aircraft.Coordinates;
+
 /*
 **  singleton pattern
 */
 
 public class WeatherProvider {
+
     private static WeatherProvider ourInstance = new WeatherProvider();
+    private static String[];
+
+    private WeatherProvider() {
+
+    }
 
     public static WeatherProvider getProvider() {
         return ourInstance;
     }
 
-    private WeatherProvider() {
+    public String getCurrentWeather(Coordinates coordinates) {
+
     }
 }

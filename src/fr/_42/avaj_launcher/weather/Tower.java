@@ -16,11 +16,11 @@ public abstract class Tower {
     }
 
     public void register(Flyable flyable) {
-
+        observers.add(flyable);
     }
 
-    public void unregister() {
-
+    public void unregister(Flyable flyable) {
+        observers.remove(flyable);
     }
 
     protected void conditionsChanged() {

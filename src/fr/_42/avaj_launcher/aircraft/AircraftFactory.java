@@ -1,7 +1,7 @@
 package fr._42.avaj_launcher.aircraft;
 
 /*
-*   factory pattern
+*   factory pattern linke a l'interface directement
 */
 
 public abstract class AircraftFactory {
