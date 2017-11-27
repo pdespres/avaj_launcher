@@ -9,7 +9,7 @@ import fr._42.pdespres.avaj_launcher.aircraft.Coordinates;
 public class WeatherProvider {
 
     private static WeatherProvider ourInstance = new WeatherProvider();
-    private static String[];
+    private static String[] = {"RAIN", "FOG", "SUN", "SNOW"};
 
     private WeatherProvider() {
 
@@ -20,6 +20,9 @@ public class WeatherProvider {
     }
 
     public String getCurrentWeather(Coordinates coordinates) {
+        if (coordinates.getHeight() > 50) {
 
+        }
+        }
     }
 }

@@ -4,11 +4,7 @@ import fr._42.pdespres.avaj_launcher.weather.WeatherTower;
 
 public interface Flyable {
 
-    public void updateConditions() {
+    public void updateConditions();
 
-    }
-
-    public void registerTower(WeatherTower weatherTower) {
-
-    }
+    public void registerTower(WeatherTower weatherTower);
 }
