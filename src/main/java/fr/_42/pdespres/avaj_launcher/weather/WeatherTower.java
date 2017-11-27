@@ -9,9 +9,6 @@ public class WeatherTower extends Tower {
     }
 
     void changeWeather() {
-        for (int i = 1 ; i <= observers.size() ; i++) {
-            observers[i].
-        }
-
+        conditionsChanged();
     }
 }
