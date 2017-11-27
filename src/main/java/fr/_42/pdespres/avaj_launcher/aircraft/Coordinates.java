@@ -1,5 +1,9 @@
 package fr._42.pdespres.avaj_launcher.aircraft;
 
+/*
+**  pas de set, il faut passer de new coord a chaque fois
+*/
+
 public class Coordinates {
 
     private int longitude;

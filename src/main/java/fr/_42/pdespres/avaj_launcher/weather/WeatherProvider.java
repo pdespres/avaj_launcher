@@ -1,6 +1,7 @@
 package fr._42.pdespres.avaj_launcher.weather;
 
 import fr._42.pdespres.avaj_launcher.aircraft.Coordinates;
+import java.util.Random;
 
 /*
 **  singleton pattern
