@@ -22,7 +22,7 @@ public class Helicopter extends Aircraft implements Flyable {
                 System.out.println(this + " \n");
                 break;
             } case "SUN": {
-                coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude() + 10, coordinates.getHeight() + 2);
+                coordinates = new Coordinates(coordinates.getLongitude() + 10, coordinates.getLatitude(), coordinates.getHeight() + 2);
                 System.out.println(this + " \n");
                 break;
             } case "SNOW": {
@@ -36,5 +36,6 @@ public class Helicopter extends Aircraft implements Flyable {
     @Override
     public void registerTower(WeatherTower weatherTower) {
         this.weatherTower = weatherTower;
+        this.weatherTower.register(this);
     }
 }
