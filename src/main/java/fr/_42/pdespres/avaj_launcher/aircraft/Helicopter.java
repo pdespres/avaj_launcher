@@ -15,21 +15,24 @@ public class Helicopter extends Aircraft implements Flyable {
         switch (weatherTower.getWeather(this.coordinates)) {
             case "RAIN": {
                 coordinates = new Coordinates(coordinates.getLongitude() + 5, coordinates.getLatitude(), coordinates.getHeight());
-                System.out.println(this + " \n");
+                System.out.println(this + "Few drops here.");
                 break;
             } case "FOG": {
                 coordinates = new Coordinates(coordinates.getLongitude() + 1, coordinates.getLatitude(), coordinates.getHeight());
-                System.out.println(this + " \n");
+                System.out.println(this + "Some fog here.");
                 break;
             } case "SUN": {
                 coordinates = new Coordinates(coordinates.getLongitude() + 10, coordinates.getLatitude(), coordinates.getHeight() + 2);
-                System.out.println(this + " \n");
+                System.out.println(this + "Nice weather here.");
                 break;
             } case "SNOW": {
                 coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 12);
-                System.out.println(this + " \n");
+                System.out.println(this + "Rotor freezing...going down fast. Any place to land here?");
                 break;
             }
+        }
+        if (coordinates.getHeight() == 0) {
+            weatherTower.unregister(this);
         }
     }
 
