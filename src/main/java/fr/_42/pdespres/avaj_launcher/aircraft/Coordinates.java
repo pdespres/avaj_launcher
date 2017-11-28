@@ -18,6 +18,10 @@ public class Coordinates {
         if (height < 0)
             height = 0;
         this.height = height;
+        if (this.longitude < 0)
+            this.longitude = 0;
+        if (this.latitude < 0)
+            this.latitude = 0;
     }
 
     public int getLongitude()
