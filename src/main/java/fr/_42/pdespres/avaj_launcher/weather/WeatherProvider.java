@@ -10,7 +10,7 @@ import java.util.Random;
 public class WeatherProvider {
 
     private static          WeatherProvider weatherProvider = new WeatherProvider();
-    private static          String[] weather = {"RAIN", "FOG", "SUN", "SNOW"};
+    private static          String[] weather = {"FOG", "RAIN", "SNOW", "SUN"};
 
     private WeatherProvider() {
 
@@ -22,10 +22,21 @@ public class WeatherProvider {
 
     public String getCurrentWeather(Coordinates coordinates) {
 
-        private Random      rnd;
+         Random             rnd = new Random();
 
-        if(coordinates.getHeight() > 50)
-        String weather = "SUN";
-        return (weather);
+        if(coordinates.getHeight() > 50) {
+            if(rnd.nextInt(99) > 49)
+                return ("SUN");
+            else
+                return (weather[rnd.nextInt(2)]);
+        }
+        else if(coordinates.getHeight() < 10) {
+            if(rnd.nextInt(99) > 49)
+                return ("FOG");
+            else
+                return (weather[rnd.nextInt(2) + 1]);
+        }
+        else
+            return (weather[rnd.nextInt(3)]);
     }
 }

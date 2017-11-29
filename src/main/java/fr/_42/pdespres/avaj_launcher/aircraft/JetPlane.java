@@ -1,6 +1,8 @@
 package fr._42.pdespres.avaj_launcher.aircraft;
 
 import com.sun.xml.internal.bind.v2.TODO;
+import fr._42.pdespres.avaj_launcher.exceptions.FileWriteException;
+import fr._42.pdespres.avaj_launcher.readandwrite.Write;
 import fr._42.pdespres.avaj_launcher.weather.WeatherTower;
 
 public class JetPlane extends Aircraft implements Flyable {
@@ -12,26 +14,26 @@ public class JetPlane extends Aircraft implements Flyable {
     }
 
     @Override
-    public void updateConditions() {
+    public void updateConditions() throws FileWriteException {
         switch (weatherTower.getWeather(this.coordinates)) {
             case "RAIN": {
                 coordinates = new Coordinates(coordinates.getLongitude() , coordinates.getLatitude() + 5, coordinates.getHeight());
-                System.out.println(this + "A bit of rough weather. Buckles on.");
+                Write.writeToTarget(this + "A bit of rough weather. Buckles on.");
                 break;
             }
             case "FOG": {
                 coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude() + 1, coordinates.getHeight());
-                System.out.println(this + "Can't see much. Radar on.");
+                Write.writeToTarget(this + "Can't see much. Radar on.");
                 break;
             }
             case "SUN": {
                 coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude() + 10, coordinates.getHeight() + 2);
-                System.out.println(this + "Sunglasses time. Auto-pilot on.");
+                Write.writeToTarget(this + "Sunglasses time. Auto-pilot on.");
                 break;
             }
             case "SNOW": {
                 coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 7);
-                System.out.println(this + "Snowing! Going down for security. Moving on.");
+                Write.writeToTarget(this + "Snowing! Going down for security. Moving on.");
                 break;
             }
             default: {
@@ -39,13 +41,13 @@ public class JetPlane extends Aircraft implements Flyable {
             }
         }
         if (coordinates.getHeight() == 0) {
-            System.out.println(this + " landing @longitude " + this.coordinates.getLongitude() + " latitude " + this.coordinates.getLatitude() + ".");
+            Write.writeToTarget(this + " landing @longitude " + this.coordinates.getLongitude() + " latitude " + this.coordinates.getLatitude() + ".");
             weatherTower.unregister(this);
         }
     }
 
     @Override
-    public void registerTower(WeatherTower weatherTower) {
+    public void registerTower(WeatherTower weatherTower) throws FileWriteException{
         this.weatherTower = weatherTower;
         this.weatherTower.register(this);
     }

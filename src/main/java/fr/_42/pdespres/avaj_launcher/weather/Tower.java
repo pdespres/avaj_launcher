@@ -1,6 +1,9 @@
 package fr._42.pdespres.avaj_launcher.weather;
 
 import fr._42.pdespres.avaj_launcher.aircraft.Flyable;
+import fr._42.pdespres.avaj_launcher.exceptions.FileWriteException;
+import fr._42.pdespres.avaj_launcher.readandwrite.Write;
+
 import java.util.ArrayList;
 
 /*
@@ -15,17 +18,17 @@ public abstract class Tower {
         observers = new ArrayList<>();
     }
 
-    public void register(Flyable flyable) {
+    public void register(Flyable flyable) throws  FileWriteException {
         observers.add(flyable);
-        System.out.println("Tower says: " + flyable + " registered to weather tower.");
+        Write.writeToTarget("Tower says: " + flyable + " registered to weather tower.");
     }
 
-    public void unregister(Flyable flyable) {
+    public void unregister(Flyable flyable) throws FileWriteException {
         observers.remove(flyable);
-        System.out.println("Tower says: " + flyable + " unregistered from weather tower.");
+        Write.writeToTarget("Tower says: " + flyable + " unregistered from weather tower.");
     }
 
-    protected void conditionsChanged() {
+    protected void conditionsChanged() throws FileWriteException {
         for(Flyable flyable : observers) {
             flyable.updateConditions();
         }

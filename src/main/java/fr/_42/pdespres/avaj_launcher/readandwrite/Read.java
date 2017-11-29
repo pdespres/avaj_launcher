@@ -14,10 +14,11 @@ public class Read {
 		this.path = path;
 		try {
 			BufferedReader 		source = new BufferedReader(new FileReader(path));
-			String line;
+			String 				line;
 			while ((line = source.readLine()) != null) {
 				sourceLst.add(line);
 			}
+			source.close();
 		} catch (FileNotFoundException e) {
 			throw new FileReadException("Can't find file " + path + "\n");
 		} catch (IOException e) {

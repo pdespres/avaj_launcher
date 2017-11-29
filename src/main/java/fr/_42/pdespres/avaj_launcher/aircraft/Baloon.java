@@ -1,5 +1,7 @@
 package fr._42.pdespres.avaj_launcher.aircraft;
 
+import fr._42.pdespres.avaj_launcher.exceptions.FileWriteException;
+import fr._42.pdespres.avaj_launcher.readandwrite.Write;
 import fr._42.pdespres.avaj_launcher.weather.WeatherTower;
 
 public class Baloon extends Aircraft implements Flyable {
@@ -11,35 +13,35 @@ public class Baloon extends Aircraft implements Flyable {
     }
 
     @Override
-    public void updateConditions() {
+    public void updateConditions() throws FileWriteException {
         switch (weatherTower.getWeather(this.coordinates)) {
             case "RAIN": {
                 coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 5);
-                System.out.println(this + ": Oh great, some rain!");
+                Write.writeToTarget(this + ": Oh great, some rain!");
                 break;
             } case "FOG": {
                 coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 3);
-                System.out.println(this + ": Shit fog!");
+                Write.writeToTarget(this + ": Shit fog!");
                 break;
             } case "SUN": {
                 coordinates = new Coordinates(coordinates.getLongitude() + 2, coordinates.getLatitude(), coordinates.getHeight() + 4);
-                System.out.println(this + ": Everything ok.");
+                Write.writeToTarget(this + ": Everything ok.");
                 break;
             } case "SNOW": {
                 coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 15);
-                System.out.println(this + ": Snow...Our father, who art in heaven...");
+                Write.writeToTarget(this + ": Snow...Our father, who art in heaven...");
                 break;
             }
         }
         if (coordinates.getHeight() == 0) {
-            System.out.println(this + " landing @longitude " + this.coordinates.getLongitude() + " latitude " + this.coordinates.getLatitude() + ".");
+            Write.writeToTarget(this + " landing @longitude " + this.coordinates.getLongitude() + " latitude " + this.coordinates.getLatitude() + ".");
             weatherTower.unregister(this);
         }
 
     }
 
     @Override
-    public void registerTower(WeatherTower weatherTower) {
+    public void registerTower(WeatherTower weatherTower) throws FileWriteException {
         this.weatherTower = weatherTower;
         this.weatherTower.register(this);
     }

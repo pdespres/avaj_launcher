@@ -10,9 +10,10 @@ public class Write {
 	public Write(String path) throws FileCreateException {
 		try {
 			Write.target = new File(path);
-			if (!Write.target.exists()) {
-				Write.target.createNewFile();
+			if (Write.target.exists()) {
+				Write.target.delete();
 			}
+			Write.target.createNewFile();
 		} catch (Exception e) {
 			throw new FileCreateException("Can't create file " + path + "\n");
 		}
