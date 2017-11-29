@@ -30,8 +30,6 @@ public abstract class Tower {
 
     protected void conditionsChanged() throws FileWriteException {
         for (int i = 0; i < observers.size(); i++) {
-        //for(Flyable flyable : observers) {
-            System.out.println("launch update ok for " + observers.get(i));
             observers.get(i).updateConditions();
         }
     }

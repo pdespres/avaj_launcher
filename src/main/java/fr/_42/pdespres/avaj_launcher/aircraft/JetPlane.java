@@ -1,9 +1,8 @@
 package fr._42.pdespres.avaj_launcher.aircraft;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import fr._42.pdespres.avaj_launcher.exceptions.FileWriteException;
 import fr._42.pdespres.avaj_launcher.readandwrite.Write;
-import fr._42.pdespres.avaj_launcher.weather.WeatherTower;
+import fr._42.pdespres.avaj_launcher.WeatherTower;
 
 public class JetPlane extends Aircraft implements Flyable {
 
@@ -37,7 +36,7 @@ public class JetPlane extends Aircraft implements Flyable {
                 break;
             }
             default: {
-                //TODO
+                throw new FileWriteException("Error weather undefined for " + this + ".");
             }
         }
         if (coordinates.getHeight() == 0) {

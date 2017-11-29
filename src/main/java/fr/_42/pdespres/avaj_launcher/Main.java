@@ -2,7 +2,6 @@ package fr._42.pdespres.avaj_launcher;
 
 import fr._42.pdespres.avaj_launcher.aircraft.AircraftFactory;
 import fr._42.pdespres.avaj_launcher.aircraft.Flyable;
-import fr._42.pdespres.avaj_launcher.weather.WeatherTower;
 import fr._42.pdespres.avaj_launcher.exceptions.*;
 import fr._42.pdespres.avaj_launcher.readandwrite.Read;
 import fr._42.pdespres.avaj_launcher.readandwrite.Write;
@@ -91,7 +90,6 @@ public class Main {
             Main.nbRun = Integer.parseInt(ifile.sourceLst.get(0));
             for (int i = 1; i < ifile.sourceLst.size(); i++) {
                 String[] word = ifile.sourceLst.get(i).split(" ");
-                //todo  aircraftfactory change en class non abstract?
                 Flyable flyable = AircraftFactory.newAirCraft(word[0], word[1], Integer.parseInt(word[2]), Integer.parseInt(word[3]), Integer.parseInt(word[4]));
                 if (flyable.equals(null))
                     throw new FileWriteException("Aircraft creation failed on line " + i + ".");
@@ -102,10 +100,8 @@ public class Main {
             System.exit(42);
         }
 
-        //todo  weathertower change en public?
         for (int i = 0; i < Main.nbRun; i++) {
             try {
-                System.out.println("change weather " + i);
                 weatherTower.changeWeather();
             } catch (FileWriteException e) {
                 System.err.print(e);

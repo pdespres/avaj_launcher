@@ -2,7 +2,7 @@ package fr._42.pdespres.avaj_launcher.aircraft;
 
 import fr._42.pdespres.avaj_launcher.exceptions.FileWriteException;
 import fr._42.pdespres.avaj_launcher.readandwrite.Write;
-import fr._42.pdespres.avaj_launcher.weather.WeatherTower;
+import fr._42.pdespres.avaj_launcher.WeatherTower;
 
 public class Baloon extends Aircraft implements Flyable {
 
@@ -31,6 +31,9 @@ public class Baloon extends Aircraft implements Flyable {
                 coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 15);
                 Write.writeToTarget(this + ": Snow...Our father, who art in heaven...");
                 break;
+            }
+            default: {
+                throw new FileWriteException("Error weather undefined for " + this + ".");
             }
         }
         if (coordinates.getHeight() == 0) {

@@ -1,7 +1,13 @@
-package fr._42.pdespres.avaj_launcher.weather;
+package fr._42.pdespres.avaj_launcher;
 
 import fr._42.pdespres.avaj_launcher.aircraft.Coordinates;
 import fr._42.pdespres.avaj_launcher.exceptions.FileWriteException;
+import fr._42.pdespres.avaj_launcher.weather.Tower;
+import fr._42.pdespres.avaj_launcher.weather.WeatherProvider;
+
+/*
+**  Weathertower place ici plutot qu'en package weather pour respecter le package visibility de changeweather
+*/
 
 public class WeatherTower extends Tower {
 
@@ -9,7 +15,7 @@ public class WeatherTower extends Tower {
         return (WeatherProvider.getProvider().getCurrentWeather(coordinates));
     }
 
-    public void changeWeather() throws FileWriteException {
+    void changeWeather() throws FileWriteException {
         conditionsChanged();
     }
 }

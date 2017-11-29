@@ -5,7 +5,7 @@ package fr._42.pdespres.avaj_launcher.aircraft;
 **  use sub aircraft classes to create flyable
 */
 
-public class AircraftFactory {
+public abstract class AircraftFactory {
 
     public static Flyable newAirCraft(String type, String name, int longitude, int latitude, int height) {
         switch (type) {
