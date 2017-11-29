@@ -9,8 +9,8 @@ import java.util.Random;
 
 public class WeatherProvider {
 
-    private static WeatherProvider weatherProvider = new WeatherProvider();
-    private static String[] weather = {"RAIN", "FOG", "SUN", "SNOW"};
+    private static          WeatherProvider weatherProvider = new WeatherProvider();
+    private static          String[] weather = {"RAIN", "FOG", "SUN", "SNOW"};
 
     private WeatherProvider() {
 
@@ -21,6 +21,10 @@ public class WeatherProvider {
     }
 
     public String getCurrentWeather(Coordinates coordinates) {
+
+        private Random      rnd;
+
+        if(coordinates.getHeight() > 50)
         String weather = "SUN";
         return (weather);
     }

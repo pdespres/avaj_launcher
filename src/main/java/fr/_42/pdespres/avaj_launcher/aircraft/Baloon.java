@@ -15,25 +15,25 @@ public class Baloon extends Aircraft implements Flyable {
         switch (weatherTower.getWeather(this.coordinates)) {
             case "RAIN": {
                 coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 5);
-                System.out.println(this + "Oh great, some rain!");
+                System.out.println(this + ": Oh great, some rain!");
                 break;
             } case "FOG": {
                 coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 3);
-                System.out.println(this + "Shit fog!");
+                System.out.println(this + ": Shit fog!");
                 break;
             } case "SUN": {
                 coordinates = new Coordinates(coordinates.getLongitude() + 2, coordinates.getLatitude(), coordinates.getHeight() + 4);
-                System.out.println(this + "Eveything ok.");
+                System.out.println(this + ": Everything ok.");
                 break;
             } case "SNOW": {
                 coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 15);
-                System.out.println(this + "Snow...Our father, who art in heaven...");
+                System.out.println(this + ": Snow...Our father, who art in heaven...");
                 break;
             }
         }
         if (coordinates.getHeight() == 0) {
+            System.out.println(this + " landing @longitude " + this.coordinates.getLongitude() + " latitude " + this.coordinates.getLatitude() + ".");
             weatherTower.unregister(this);
-            // log coordinates
         }
 
     }

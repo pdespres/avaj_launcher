@@ -31,7 +31,7 @@ public class Main {
         **  init de l'output file (package r&w class write)
         */
         try {
-            Write           ofile = new Write("?/simulation.txt");
+            Write           ofile = new Write("./simulation.txt");
         } catch (FileCreateException e) {
             System.err.print(e);
             System.exit(42);
@@ -45,7 +45,8 @@ public class Main {
         ** Lancement de la simulation
         */
         WeatherTower weatherTower = new WeatherTower();
-
+        // register tower
+//  traiter le null du aircraft factory
 //  weathertower change en public?
         for (int i = 0; i < Main.nbRun; i++) {
             weatherTower.changeWeather();
