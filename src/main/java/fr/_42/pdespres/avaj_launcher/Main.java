@@ -50,15 +50,40 @@ public class Main {
         /*
         **  parser de l'input
         */
-        for (String string : ifile.sourceLst) {
-            String[] test = string.split(" ");
-            if(Integer.parseInt(ifile.sourceLst.get(0)) < 0) {
-                System.out.println("ko");
+        try {
+            if (ifile.sourceLst.size() < 1) {
+                throw new FileParserException("test" + ifile.sourceLst.size());
             }
-            for (String s : test) {
-                System.out.println(s);
+            try {
+                if (Integer.parseInt(ifile.sourceLst.get(0)) < 0) {
+                    throw new FileParserException("Scenario first line should be a positive number.");
+                }
+            } catch (NumberFormatException e) {
+                throw new FileParserException("Scenario first line should be a positive number.");
             }
+            for (int i = 1; i < ifile.sourceLst.size(); i++) {
+                String[] word = ifile.sourceLst.get(i).toUpperCase().split(" ");
+                if (word.length < 5)
+                    throw new FileParserException("Scenario line " + (i + 1) + " has too few info.");
+                if (word.length > 5)
+                    throw new FileParserException("Scenario line " + (i + 1) + " has too much info.");
+                if (!word[0].equals("BALOON") && !word[0].equals("JETPLANE") && !word[0].equals("HELICOPTER"))
+                    throw new FileParserException("Scenario first item of a line should be Baloon or JetPlane or Helicopter.");
+                for (int j = 2; j < 5; j++) {
+                    try {
+                        if (Integer.parseInt(word[j]) < 0) {
+                            throw new FileParserException("Scenario line " + (i + 1) + " field " + (j + 1) + " should be a positive number.");
+                        }
+                    } catch (NumberFormatException e) {
+                        throw new FileParserException("Scenario line " + (i + 1) + " last three fields should hold numbers.");
+                    }
+                }
+            }
+        } catch (FileParserException e) {
+            System.err.print(e);
+            System.exit(42);
         }
+
         System.exit(42);
         /*
         ** Lancement de la simulation

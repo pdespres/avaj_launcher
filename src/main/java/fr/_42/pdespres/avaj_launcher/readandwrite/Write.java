@@ -15,7 +15,7 @@ public class Write {
 			}
 			Write.target.createNewFile();
 		} catch (Exception e) {
-			throw new FileCreateException("Can't create file " + path + "\n");
+			throw new FileCreateException("Can't create file " + path + ".");
 		}
 	}
 
@@ -27,7 +27,7 @@ public class Write {
 			bw = new BufferedWriter(fw);
 			bw.write(string);
 		} catch (Exception e) {
-			throw new FileWriteException("Can't write to file " + target.getAbsolutePath() + "\n");
+			throw new FileWriteException("Can't write to file " + target.getAbsolutePath() + ".");
 		} finally {
 			try {
 				if (bw != null) {

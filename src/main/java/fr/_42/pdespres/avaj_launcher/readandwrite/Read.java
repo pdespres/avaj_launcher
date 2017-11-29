@@ -20,9 +20,9 @@ public class Read {
 			}
 			source.close();
 		} catch (FileNotFoundException e) {
-			throw new FileReadException("Can't find file " + path + "\n");
+			throw new FileReadException("Can't find file " + path + ".");
 		} catch (IOException e) {
-			throw new FileReadException("Can't read file: " + path + "\n");
+			throw new FileReadException("Can't read file: " + path + ".");
 		}
 	}
 }
