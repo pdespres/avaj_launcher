@@ -25,7 +25,7 @@ public class Write {
 		try {
 			fw = new FileWriter(Write.target.getAbsoluteFile(), true);
 			bw = new BufferedWriter(fw);
-			bw.write(string);
+			bw.write(string + "\n");
 		} catch (Exception e) {
 			throw new FileWriteException("Can't write to file " + target.getAbsolutePath() + ".");
 		} finally {

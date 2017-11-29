@@ -1,13 +1,12 @@
 package fr._42.pdespres.avaj_launcher;
 
+import fr._42.pdespres.avaj_launcher.aircraft.AircraftFactory;
 import fr._42.pdespres.avaj_launcher.aircraft.Flyable;
+import fr._42.pdespres.avaj_launcher.weather.WeatherTower;
 import fr._42.pdespres.avaj_launcher.exceptions.*;
 import fr._42.pdespres.avaj_launcher.readandwrite.Read;
 import fr._42.pdespres.avaj_launcher.readandwrite.Write;
-import fr._42.pdespres.avaj_launcher.weather.WeatherTower;
-
 import java.io.File;
-import java.util.ArrayList;
 
 public class Main {
 
@@ -15,7 +14,7 @@ public class Main {
     public static Read      ifile;
     public static Write     ofile;
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
 
         /*
         **  init de l'input file (package r&w class read)
@@ -51,9 +50,6 @@ public class Main {
         **  parser de l'input
         */
         try {
-            if (ifile.sourceLst.size() < 1) {
-                throw new FileParserException("test" + ifile.sourceLst.size());
-            }
             try {
                 if (Integer.parseInt(ifile.sourceLst.get(0)) < 0) {
                     throw new FileParserException("Scenario first line should be a positive number.");
@@ -61,13 +57,16 @@ public class Main {
             } catch (NumberFormatException e) {
                 throw new FileParserException("Scenario first line should be a positive number.");
             }
+            if (ifile.sourceLst.size() < 2) {
+                throw new FileParserException("Scenario don't have aircraft data.");
+            }
             for (int i = 1; i < ifile.sourceLst.size(); i++) {
-                String[] word = ifile.sourceLst.get(i).toUpperCase().split(" ");
+                String[] word = ifile.sourceLst.get(i).split(" ");
                 if (word.length < 5)
                     throw new FileParserException("Scenario line " + (i + 1) + " has too few info.");
                 if (word.length > 5)
                     throw new FileParserException("Scenario line " + (i + 1) + " has too much info.");
-                if (!word[0].equals("BALOON") && !word[0].equals("JETPLANE") && !word[0].equals("HELICOPTER"))
+                if (!word[0].toUpperCase().equals("BALOON") && !word[0].toUpperCase().equals("JETPLANE") && !word[0].toUpperCase().equals("HELICOPTER"))
                     throw new FileParserException("Scenario first item of a line should be Baloon or JetPlane or Helicopter.");
                 for (int j = 2; j < 5; j++) {
                     try {
@@ -84,16 +83,29 @@ public class Main {
             System.exit(42);
         }
 
-        System.exit(42);
         /*
         ** Lancement de la simulation
         */
         WeatherTower weatherTower = new WeatherTower();
-        // register tower
-//  traiter le null du aircraft factory
-//  weathertower change en public?
+        try {
+            Main.nbRun = Integer.parseInt(ifile.sourceLst.get(0));
+            for (int i = 1; i < ifile.sourceLst.size(); i++) {
+                String[] word = ifile.sourceLst.get(i).split(" ");
+                //todo  aircraftfactory change en class non abstract?
+                Flyable flyable = AircraftFactory.newAirCraft(word[0], word[1], Integer.parseInt(word[2]), Integer.parseInt(word[3]), Integer.parseInt(word[4]));
+                if (flyable.equals(null))
+                    throw new FileWriteException("Aircraft creation failed on line " + i + ".");
+                flyable.registerTower(weatherTower);
+            }
+        } catch (FileWriteException e) {
+            System.err.print(e);
+            System.exit(42);
+        }
+
+        //todo  weathertower change en public?
         for (int i = 0; i < Main.nbRun; i++) {
             try {
+                System.out.println("change weather " + i);
                 weatherTower.changeWeather();
             } catch (FileWriteException e) {
                 System.err.print(e);
