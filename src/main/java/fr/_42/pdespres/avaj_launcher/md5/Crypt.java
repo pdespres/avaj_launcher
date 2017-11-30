@@ -1,4 +1,4 @@
-package fr._42.pdespres.avaj_launcher.MD5;
+package fr._42.pdespres.avaj_launcher.md5;
 
 import fr._42.pdespres.avaj_launcher.exceptions.FileCreateException;
 import fr._42.pdespres.avaj_launcher.exceptions.FileWriteException;
@@ -41,7 +41,7 @@ public class Crypt {
     }
 
 //    private static String md5(final String input) throws NoSuchAlgorithmException {
-//        final MessageDigest md = MessageDigest.getInstance("MD5");
+//        final MessageDigest md = MessageDigest.getInstance("md5");
 //        final byte[] messageDigest = md.digest(input.getBytes());
 //        final BigInteger number = new BigInteger(1, messageDigest);
 //        return String.format("%032x", number);

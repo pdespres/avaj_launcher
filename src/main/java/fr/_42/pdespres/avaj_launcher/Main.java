@@ -1,6 +1,5 @@
 package fr._42.pdespres.avaj_launcher;
 
-import fr._42.pdespres.avaj_launcher.MD5.Crypt;
 import fr._42.pdespres.avaj_launcher.aircraft.AircraftFactory;
 import fr._42.pdespres.avaj_launcher.aircraft.Flyable;
 import fr._42.pdespres.avaj_launcher.exceptions.*;
@@ -32,8 +31,8 @@ public class Main {
             System.exit(42);
         }
 
-//        // Bout de code pour generer un fichier MD5 de test
-//        Crypt crypt = new Crypt("MD5");
+//        // Bout de code pour generer un fichier md5 de test
+//        Crypt crypt = new Crypt("md5");
 //        try {
 //            crypt.encryptFile(ifile.sourceLst);
 //        } catch (FileWriteException | FileCreateException e) {
@@ -43,7 +42,7 @@ public class Main {
 //        System.exit(42);
 
         /*
-        **  Check MD5. (Seul moyen pas terrible check length = 32)
+        **  Check md5. (Seul moyen pas terrible check length = 32)
         */
         if (ifile.sourceLst.get(0).length() == 32) {
             try {

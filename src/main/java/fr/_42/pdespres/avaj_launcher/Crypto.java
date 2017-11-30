@@ -1,6 +1,6 @@
 package fr._42.pdespres.avaj_launcher;
 
-import fr._42.pdespres.avaj_launcher.MD5.Decrypt;
+import fr._42.pdespres.avaj_launcher.md5.Decrypt;
 import fr._42.pdespres.avaj_launcher.exceptions.FileCreateException;
 import fr._42.pdespres.avaj_launcher.exceptions.FileWriteException;
 import fr._42.pdespres.avaj_launcher.readandwrite.Write;

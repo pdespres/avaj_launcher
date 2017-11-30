@@ -1,4 +1,4 @@
-package fr._42.pdespres.avaj_launcher.MD5;
+package fr._42.pdespres.avaj_launcher.md5;
 
 import java.util.HashMap;
 
@@ -17,7 +17,7 @@ public class Decrypt {
     }
 
     private void genDictionary() {
-        Crypt           crypt = new Crypt("MD5");
+        Crypt           crypt = new Crypt("md5");
         for(FirstWord firstWord : FirstWord.values()) {
            dico.put(Crypt.encrypt(firstWord.toString()), firstWord.toString());
         }
