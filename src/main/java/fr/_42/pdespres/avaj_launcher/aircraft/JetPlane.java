@@ -6,7 +6,7 @@ import fr._42.pdespres.avaj_launcher.WeatherTower;
 
 public class JetPlane extends Aircraft implements Flyable {
 
-    private WeatherTower weatherTower;
+    private WeatherTower    weatherTower;
 
     JetPlane(String name, Coordinates coordinates) {
         super(name, coordinates);
@@ -17,22 +17,22 @@ public class JetPlane extends Aircraft implements Flyable {
         switch (weatherTower.getWeather(this.coordinates)) {
             case "RAIN": {
                 coordinates = new Coordinates(coordinates.getLongitude() , coordinates.getLatitude() + 5, coordinates.getHeight());
-                Write.writeToTarget(this + "A bit of rough weather. Buckles on.");
+                Write.writeToTargetln(this + "A bit of rough weather. Buckles on.");
                 break;
             }
             case "FOG": {
                 coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude() + 1, coordinates.getHeight());
-                Write.writeToTarget(this + "Can't see much. Radar on.");
+                Write.writeToTargetln(this + "Can't see much. Radar on.");
                 break;
             }
             case "SUN": {
                 coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude() + 10, coordinates.getHeight() + 2);
-                Write.writeToTarget(this + "Sunglasses time. Auto-pilot on.");
+                Write.writeToTargetln(this + "Sunglasses time. Auto-pilot on.");
                 break;
             }
             case "SNOW": {
                 coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 7);
-                Write.writeToTarget(this + "Snowing! Going down for security. Moving on.");
+                Write.writeToTargetln(this + "Snowing! Going down for security. Moving on.");
                 break;
             }
             default: {
@@ -40,7 +40,7 @@ public class JetPlane extends Aircraft implements Flyable {
             }
         }
         if (coordinates.getHeight() == 0) {
-            Write.writeToTarget(this + " landing @longitude " + this.coordinates.getLongitude() + " latitude " + this.coordinates.getLatitude() + ".");
+            Write.writeToTargetln(this + " landing @longitude " + this.coordinates.getLongitude() + " latitude " + this.coordinates.getLatitude() + ".");
             weatherTower.unregister(this);
         }
     }

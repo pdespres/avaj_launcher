@@ -1,5 +1,6 @@
 package fr._42.pdespres.avaj_launcher;
 
+import fr._42.pdespres.avaj_launcher.MD5.Crypt;
 import fr._42.pdespres.avaj_launcher.aircraft.AircraftFactory;
 import fr._42.pdespres.avaj_launcher.aircraft.Flyable;
 import fr._42.pdespres.avaj_launcher.exceptions.*;
@@ -31,15 +32,15 @@ public class Main {
             System.exit(42);
         }
 
-        /*
-        **  init de l'output file (package r&w class write)
-        */
-        try {
-            ofile = new Write("./simulation.txt");
-        } catch (FileCreateException e) {
-            System.err.print(e);
-            System.exit(42);
-        }
+//        // Bout de code pour generer un fichier MD5 de test
+//        Crypt crypt = new Crypt("MD5");
+//        try {
+//            crypt.encryptFile(ifile.sourceLst);
+//        } catch (FileWriteException | FileCreateException e) {
+//            System.err.print(e);
+//            System.exit(42);
+//        }
+//        System.exit(42);
 
         /*
         **  Check MD5. (Seul moyen pas terrible check length = 32)
@@ -48,10 +49,20 @@ public class Main {
             try {
                 md5file = new Crypto(ifile.sourceLst);
                 ifile = new Read(new File(md5file.getNewFile()).getAbsolutePath());
-            } catch (FileReadException | FileWriteException e) {
+            } catch (FileReadException | FileWriteException | FileCreateException e) {
                 System.err.print(e);
                 System.exit(42);
             }
+        }
+
+        /*
+        **  init de l'output file (package r&w class write)
+        */
+        try {
+            ofile = new Write("./simulation.txt");
+        } catch (FileCreateException e) {
+            System.err.print(e);
+            System.exit(42);
         }
 
         /*

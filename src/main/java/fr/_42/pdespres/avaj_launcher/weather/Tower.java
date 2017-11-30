@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public abstract class Tower {
 
-    private ArrayList<Flyable> observers;
+    private ArrayList<Flyable>  observers;
 
     public Tower() {
         observers = new ArrayList<>();
@@ -20,12 +20,12 @@ public abstract class Tower {
 
     public void register(Flyable flyable) throws  FileWriteException {
         observers.add(flyable);
-        Write.writeToTarget("Tower says: " + flyable + " registered to weather tower.");
+        Write.writeToTargetln("Tower says: " + flyable + " registered to weather tower.");
     }
 
     public void unregister(Flyable flyable) throws FileWriteException {
         observers.remove(flyable);
-        Write.writeToTarget("Tower says: " + flyable + " unregistered from weather tower.");
+        Write.writeToTargetln("Tower says: " + flyable + " unregistered from weather tower.");
     }
 
     protected void conditionsChanged() throws FileWriteException {

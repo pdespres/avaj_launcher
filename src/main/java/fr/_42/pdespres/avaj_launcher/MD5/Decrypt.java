@@ -17,15 +17,16 @@ public class Decrypt {
     }
 
     private void genDictionary() {
+        Crypt           crypt = new Crypt("MD5");
         for(FirstWord firstWord : FirstWord.values()) {
-           dico.put(Crypt.Crypt(firstWord.toString()), firstWord.toString());
+           dico.put(Crypt.encrypt(firstWord.toString()), firstWord.toString());
         }
         for(int i = 0; i < 1000; i++) {
-            dico.put(Crypt.Crypt(String.valueOf(i)), i);
+            dico.put(Crypt.encrypt(String.valueOf(i)), i);
         }
         for(int i = 0; i < 100; i++){
             for(NamePrefix prefix : NamePrefix.values()) {
-                dico.put(Crypt.Crypt(prefix.toString() + String.valueOf(i)), prefix.toString() + String.valueOf(i));
+                dico.put(Crypt.encrypt(prefix.toString() + String.valueOf(i)), prefix.toString() + String.valueOf(i));
             }
         }
     }

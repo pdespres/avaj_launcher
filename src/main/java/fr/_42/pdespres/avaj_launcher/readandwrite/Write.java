@@ -25,6 +25,29 @@ public class Write {
 		try {
 			fw = new FileWriter(Write.target.getAbsoluteFile(), true);
 			bw = new BufferedWriter(fw);
+			bw.write(string);
+		} catch (Exception e) {
+			throw new FileWriteException("Can't write to file " + target.getAbsolutePath() + ".");
+		} finally {
+			try {
+				if (bw != null) {
+					bw.close();
+				}
+				if (fw != null) {
+					fw.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public static void writeToTargetln(String string) throws FileWriteException{
+		BufferedWriter 		bw = null;
+		FileWriter 			fw = null;
+		try {
+			fw = new FileWriter(Write.target.getAbsoluteFile(), true);
+			bw = new BufferedWriter(fw);
 			bw.write(string + "\n");
 		} catch (Exception e) {
 			throw new FileWriteException("Can't write to file " + target.getAbsolutePath() + ".");
@@ -40,5 +63,9 @@ public class Write {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public String getPath() {
+		return (target.getAbsolutePath());
 	}
 }
