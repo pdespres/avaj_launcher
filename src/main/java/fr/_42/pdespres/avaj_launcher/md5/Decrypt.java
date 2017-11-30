@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Decrypt {
 
-    private HashMap     dico = new HashMap();
+    private HashMap<String, String>     dico = new HashMap<String, String>();
     private enum FirstWord {Baloon, JetPlane, Helicopter, BALOON, JETPLANE, HELICOPTER};
     private enum NamePrefix {B,H,J};
 
@@ -22,7 +22,7 @@ public class Decrypt {
            dico.put(Crypt.encrypt(firstWord.toString()), firstWord.toString());
         }
         for(int i = 0; i < 1000; i++) {
-            dico.put(Crypt.encrypt(String.valueOf(i)), i);
+            dico.put(Crypt.encrypt(String.valueOf(i)), String.valueOf(i));
         }
         for(int i = 0; i < 100; i++){
             for(NamePrefix prefix : NamePrefix.values()) {
