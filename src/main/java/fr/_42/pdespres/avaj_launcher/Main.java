@@ -12,22 +12,18 @@ public class Main {
     public static int       nbRun = 0;
     public static Read      ifile;
     public static Write     ofile;
+    protected static Crypto md5file;
 
     public static void main(String... args) {
 
-        /*
-        **  init de l'input file (package r&w class read)
-        */
         if(args.length != 1) {
             System.out.println("usage: java avaj_launcher scenario_file");
             System.exit(42);
         }
 
         /*
-        **  MD5? getalgorithm class message digest 128 bits 32 octet
-        **  chargement conplet en une string / traitement / rendu en newfile
+        **  init de l'input file (package r&w class read)
         */
-
         try {
             ifile = new Read(new File(args[0]).getAbsolutePath());
         } catch (FileReadException e) {
@@ -43,6 +39,19 @@ public class Main {
         } catch (FileCreateException e) {
             System.err.print(e);
             System.exit(42);
+        }
+
+        /*
+        **  Check MD5. (Seul moyen pas terrible check length = 32)
+        */
+        if (ifile.sourceLst.get(0).length() == 32) {
+            try {
+                md5file = new Crypto(ifile.sourceLst);
+                ifile = new Read(new File(md5file.getNewFile()).getAbsolutePath());
+            } catch (FileReadException | FileWriteException e) {
+                System.err.print(e);
+                System.exit(42);
+            }
         }
 
         /*
